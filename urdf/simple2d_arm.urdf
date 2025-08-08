@@ -2,43 +2,39 @@
   <!-- ===================== base_box - link1 ==============================================-->
   <!-- base_box -->
   <link name="base_box">
-    <!--見た目の定義-->
+    <!--Definition of appearance-->
     <visual>
-      <!--linkの原点からのオフセット-->
+      <!--Offset from the origin of link-->
       <origin xyz="0 0 0.6" rpy="0 0 0"/>
       <geometry>
-        <!--base_boxのサイズ（見た目）を指定-->
+        <!--Specify the size of base_box (visual representation)-->
         <box size="0.5 0.5 1.2"/>
       </geometry>
-      <!--色の指定-->
+      <!--Specify the color-->
       <material name="white">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
 
-    <!--衝突の定義（特段の理由がなければ、基本的にvisualタグと同じ設定でよい-->
+    <!--Definition of collision-->
     <collision>
-      <!--linkの原点からのオフセット-->
+      <!--Offset from the origin of link-->
       <origin xyz="0 0 0.6" rpy="0 0 0"/>
       <geometry>
-        <!--base_boxのサイズ（衝突領域）を指定-->
+        <!--Specify the size of base_box (collision area)-->
         <box size="0.5 0.5 1.2"/>
       </geometry>
-      <!--衝突に関する設定なので、materialタグはない-->
+      <!--No material tag since it is a collision-related setting-->
     </collision>
 
-    <!--イナーシャ（慣性）に関する設定-->
+    <!--Definition of inertial-->
     <inertial>
-        <!--linkの原点からのオフセット-->
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <!--linkの重量-->
-        <mass value="1" />
-        <!--イナーシャ-->
-        <inertia ixx="0.000034533333" 
-            ixy="0"  ixz="0"
-            iyx="0"  iyy="0.000034533333" 
-            iyz="0"
-            izx="0"  izy="0"  izz="0.0000648" />
+      <!--Offset from the origin of link-->
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <!--Weight of link-->
+      <mass value="1" />
+      <!--Inertia-->
+      <inertia ixx="0.000034533333" ixy="0" ixz="0" iyx="0" iyy="0.000034533333" iyz="0" izx="0" izy="0" izz="0.0000648" />
     </inertial>
   </link>
 
@@ -55,7 +51,7 @@
         <color rgba="1 0 0 1"/>
       </material>
     </visual>
-      
+
     <!--衝突の定義-->
     <collision>
       <origin xyz="0 0 0.25" rpy="0 0 0"/>
@@ -66,24 +62,21 @@
 
     <!--イナーシャの定義-->
     <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.1" />
-        <inertia ixx="0.000034533333" 
-            ixy="0"  ixz="0"
-            iyx="0"  iyy="0.000034533333" 
-            iyz="0"
-            izx="0"  izy="0"  izz="0.0000648" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="0.000034533333" ixy="0" ixz="0" iyx="0" iyy="0.000034533333" iyz="0" izx="0" izy="0" izz="0.0000648" />
     </inertial>
   </link>
 
-  <!-- joint1 （base_boxリンク と link1リンクをつなぐジョイント）-->
-  <joint name="joint1" type="continuous"> <!--回転関節-->
+  <!-- joint1 (joint connecting base_box link and link1 link)-->
+  <joint name="joint1" type="continuous">    <!--回転関節-->
     <!--親リンク-->
     <parent link="base_box"/>
     <!--子リンク-->
     <child link="link1"/>
-    <!--親リンク原点⇔子リンク原点間の距離-->
-    <origin xyz="0 0.4 1.2" rpy="0 -1.57 0"/><!--ワールド座標系におけるx軸方向が0度になるように-1.57(rad)のオフセットを設定。また、手先のカメラの視野角の関係で、y軸方向のオフセットを多めに設定-->
+    <!--Distance between parent link origin and child link origin-->
+    <origin xyz="0 0.4 1.2" rpy="0 -1.57 0"/>
+    <!--ワールド座標系におけるx軸方向が0度になるように-1.57(rad)のオフセットを設定。また、手先のカメラの視野角の関係で、y軸方向のオフセットを多めに設定-->
     <!--jointの軸方向-->
     <axis xyz="0 1 0"/>
   </joint>
@@ -103,7 +96,7 @@
       </material>
     </visual>
 
-    <!--衝突の定義-->
+    <!--Definition of collision-->
     <collision>
       <origin xyz="0 0.0 0.25" rpy="0 0 0"/>
       <geometry>
@@ -111,15 +104,11 @@
       </geometry>
     </collision>
 
-    <!--イナーシャの定義-->
+    <!--Definition of inertial-->
     <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.1" />
-        <inertia ixx="0.000034533333" 
-            ixy="0"  ixz="0"
-            iyx="0"  iyy="0.000034533333" 
-            iyz="0"
-            izx="0"  izy="0"  izz="0.0000648" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="0.000034533333" ixy="0" ixz="0" iyx="0" iyy="0.000034533333" iyz="0" izx="0" izy="0" izz="0.0000648" />
     </inertial>
   </link>
 
@@ -154,13 +143,9 @@
 
     <!--イナーシャの定義-->
     <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.0001" />
-        <inertia ixx="0.000034533333" 
-            ixy="0"  ixz="0"
-            iyx="0"  iyy="0.000034533333" 
-            iyz="0"
-            izx="0"  izy="0"  izz="0.0000648" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="0.000034533333" ixy="0" ixz="0" iyx="0" iyy="0.000034533333" iyz="0" izx="0" izy="0" izz="0.0000648" />
     </inertial>
   </link>
 
@@ -205,13 +190,9 @@
 
     <!--イナーシャの定義-->
     <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.0001" />
-        <inertia ixx="0.000034533333" 
-            ixy="0"  ixz="0"
-            iyx="0"  iyy="0.000034533333" 
-            iyz="0"
-            izx="0"  izy="0"  izz="0.0000648" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="0.000034533333" ixy="0" ixz="0" iyx="0" iyy="0.000034533333" iyz="0" izx="0" izy="0" izz="0.0000648" />
     </inertial>
   </link>
 
